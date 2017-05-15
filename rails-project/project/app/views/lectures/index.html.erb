@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+<div class="container">
+<h1>Lectures</h1>
+      <div class="panel panel-default">
+  <div class="panel-body">
+<table class="table">
+  <thead>
+    <tr>
+      <th>Content</th>
+      <th>Attatchment</th>
+      <th>Course</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @lectures.each do |lecture| %>
+      <tr>
+        
+        <td><%= raw lecture.content %></td>
+        <td><%= lecture.attatchment %></td>
+        <td><%= lecture.course.title %></td>
+        <td><%= link_to 'Show', lecture , :class=>"btn btn-warning"%></td>
+        <td><%= link_to 'Edit', edit_lecture_path(lecture) , :class=>"btn btn-success" %></td>
+        <td><%= link_to 'Destroy', lecture, method: :delete, data: { confirm: 'Are you sure?' } , :class=>"btn btn-danger"%></td>
+
+
+
+
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<br>
+<%= link_to 'New Lecture', new_lecture_path , :class=>"btn btn-primary"%>
+</div>
+</div>
+</div>

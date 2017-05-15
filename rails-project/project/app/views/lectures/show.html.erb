@@ -1,0 +1,94 @@
+<div class="container">
+
+<p id="notice"><%= notice %></p>
+<div class="panel panel-default">
+  <div class="panel-heading">
+
+
+<p>
+  <strong>Content:</strong>
+  <%= raw@lecture.content %>
+</p>
+
+<p>
+  <strong>Attatchment:</strong>
+
+   <%= image_tag(@lecture.attatchment,:size=>"30*30",:alt=>"test")%>
+</p>
+
+<p>
+  <strong>Course:</strong>
+  <%= @lecture.course.title %>
+</p>
+<%= link_to like_lecture_path(@lecture), method: :put do %>
+  Like
+  <%= @lecture.get_upvotes.size %>
+<% end %>
+
+<%= link_to dislike_lecture_path(@lecture), method: :put do %>
+  Unlike
+  <%= @lecture.get_downvotes.size %>
+<% end %>
+
+</br>
+    <% if @current_normal_user %>
+   <% unless @current_normal_user.lectures.include?(@lecture) %>
+  <td><%= link_to 'Add_to_spam', add_to_fav_lecture_path(@lecture), method: :put %></td>
+  <% else %>
+  <td><%= link_to 'Remove_from_spam', delete_from_fav_lecture_path(@lecture), method: :delete %></td>
+
+<% end %>
+<% end %>
+
+
+<table class="table">
+  <thead>
+    <tr>
+      <th> visitor comments</th>
+    </tr>
+  </thead>
+ <tbody>
+    <% @lecture.comments.each do |comment| %>
+      <tr>
+        <td>
+
+          <%=comment.body %>
+
+        </td>
+           <td><%# comment.user.email %></td>
+       </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+     </div>
+</div>
+</div>
+</div>
+</div>
+<div class="container">
+
+  <div class="panel-heading">add comment</div>
+
+
+<%= form_for([@lecture,@lecture.comments.build]) do |f| %>
+
+
+  <div class="field">
+
+    <%= f.text_area :body ,:class => 'form-control' %>
+  </div>
+
+
+  <div class="actions">
+    <%= f.submit  %>
+  </div>
+<% end %>
+</div>
+</div>
+
+</div>
+<div class="container">
+<%= link_to 'Edit', edit_lecture_path(@lecture) , :class=>"btn btn-success"%>
+<%= link_to 'Back', lectures_path , :class=>"btn btn-success"%>
+</div>

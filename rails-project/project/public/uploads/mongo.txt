@@ -1,0 +1,71 @@
+1) user
+*********************************************************
+1)
+db.users.insert([{"name":"ahmed","email":"ahmed@gmail.com","phone":"12456","age":"10",
+articles:[{"title":"art1","content":"content of article1","date":"1/1/2017",
+category:{"name":"cat1","desc":"desc of cat 1 done by ahmed"}},
+{"title":"art2","content":"content of article 2","date":"1/2/2010",
+category:{"name":"cat2","desc":"desc of cat 2 done by ahmed"}}]},
+{"name":"mina","email":"mina@gmail.com","phone":"12456","age":"30",
+articles:{"title":"art3","content":"content of article3","date":"1/1/2016",
+category:{"name":"cat3","desc":"desc of cat 3 done by mina"}}}]))
+2)
+db.users.insert({"name":"ali","email":"ali@gmail.com","phone":"12456","age":"20",articles:{}})
+
+
+
+2)articles
+****************************************************************************************************
+1)
+db.articles.insert([{"title":"art1","content":"content of article1","date":"1/1/2017",category:{"name":"cat1","desc":"desc of cat 1 done by ahmed"},"user":{"name":"ahmed","email":"ahmed@gmail.com","phone":"12456","age":"10"}},{"title":"art2","content":"content of article 2","date":"1/2/2010",category:{"name":"cat2","desc":"desc of cat 2 done by ahmed"},"user":{"name":"ahmed","email":"ahmed@gmail.com","phone":"12456","age":"10"}}])
+
+2)
+db.articles.insert({"title":"art3","content":"content of article3","date":"1/1/2016",category:{"name":"cat3","desc":"desc of cat 3 done by mina"},"user":{"name":"mina","email":"mina@gmail.com","phone":"12456","age":"30"}})
+
+
+
+
+3)categories
+*******************************************************************************************************
+db.category.insert([{"name":"cat1","desc":"desc of cat 1 done by ahmed","articles":{"title":"art1","content":"content of article1","date":"1/1/2017","user":{"name":"ahmed","email":"ahmed@gmail.com","phone":"12456","age":"10"}}},{"name":"cat2","desc":"desc of cat 2 done by ahmed","articles":{"title":"art2","content":"content of article2","date":"1/1/2017","user":{"name":"ahmed","email":"ahmed@gmail.com","phone":"12456","age":"10"}}},{"name":"cat3","desc":"desc of cat 3 done by mina","articles":{"title":"art3","content":"content of article3","date":"1/1/2016","user":{"name":"mina","email":"mina@gmail.com","phone":"12456","age":"30"}}}])
+
+
+
+4)update
+******************************************************************************************
+1)db.users.update({"name":"ahmed"},{$set:{ "name":"ahmed test"}})
+2)db.articles.update({"user.name":"ahmed"},{$set:{"user.name":"ahmed test"}})
+3)db.category.update({"articles.user.name":"ahmed"},{$set:{"articles.user.name":"ahmed test"}})
+
+
+
+5)remove
+*************
+db.users.remove({"name":"ali"})
+
+
+
+6)find all articles
+********************
+db.articles.find().pretty()
+
+
+7)select user greater than 20
+******************************
+db.users.find({"age":{$gt:"20"}}).pretty()
+
+
+8)find all articles titles only 
+********************************
+db.articles.find({},{"title":1}).pretty()
+
+
+
+9)function insert 50 document at one time
+******************************************
+
+function insertion(){
+  for(var i=0;i<=50;i++){
+    db.table.insert({"name":"esraa"})
+    }
+}

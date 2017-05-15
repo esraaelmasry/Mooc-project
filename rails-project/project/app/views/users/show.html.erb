@@ -1,0 +1,76 @@
+<p id="notice"><%= notice %></p>
+<div class="container">
+<div class="panel panel-default">
+  <div class="panel-heading">
+<p id="notice"><%= notice %></p>
+<table class="table">
+  <thead>
+
+  <tr>
+<td>
+
+  <strong>Profilepicture</strong>
+  </td>
+  <td>
+  <%= image_tag(@user.profilepicture,:size=>"30*30",:alt=>"test")%>
+  
+</td>
+  </tr>
+    <tr>
+<td>
+  <strong>Name:</strong>
+  </td>
+  <td>
+  <%= @user.name %>
+</td>
+</tr>
+
+<tr>
+<td>
+  <strong>Email</strong>
+   </td>
+   <td>
+  <%= @user.email %>
+  </td>
+  </tr>
+
+
+<tr>
+<td> 
+ <strong>Password</strong>
+ </td>
+  <td>
+  <%= @user.password %>
+</td>
+  </tr>
+
+
+<tr>
+<td> 
+  <strong>Date of Birth</strong>
+  </td>
+  <td>
+  <%= @user.dob %>
+</td>
+  </tr>
+
+<tr>
+<td> 
+  <strong>Gender</strong>
+  </td>
+  <td>
+  <%= @user.gender %>
+</td>
+  </tr>
+
+<table>
+</div>
+</div>
+
+<%= link_to 'Go To Login', control_login_path ,:class=>"btn btn-primary" if  session[:user].nil? %> 
+
+<%= link_to 'Edit', edit_user_path(@user) ,:class=>"btn btn-primary" if  !session[:user].nil?%>
+<%= link_to 'Back', users_path , :class=>"btn btn-success" if  !session[:user].nil?%> 
+
+
+</div>

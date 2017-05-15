@@ -1,0 +1,35 @@
+<div class="container">
+
+<div class="panel panel-default">
+  <div class="panel-heading">Details</div>
+  <div class="panel-body"> 
+
+<p id="notice"><%= notice %></p>
+<table <table class="table table-striped">
+<tr>
+<td>
+  <strong>Title</strong>
+  </td>
+  <td>
+  <%= @course.title   %>
+  </td>
+
+
+</tr>
+<tr>
+<td>
+
+  <strong>User</strong>
+   </td>
+  <td>
+  <%= @course.user.email  %>
+   </td>
+</tr>
+
+
+</table>
+<%= link_to 'Edit', edit_course_path(@course), :class=>"btn btn-success" %> 
+<%= link_to 'Back', courses_path , :class=>"btn btn-success"%>
+ </div>
+</div>
+</div>

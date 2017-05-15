@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+<div class="container">
+<h1>Users</h1>
+  <div class="panel panel-default">
+  <div class="panel-body">
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      
+      <th>Dob</th>
+      <th>Gender</th>
+      <th>Profilepicture</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.name %></td>
+        <td><%= user.email %></td>
+        
+        <td><%= user.dob %></td>
+        <td><%= user.gender %></td>
+         <td><%= image_tag(user.profilepicture,:size=>"30*30",:alt=>"test")%></td>
+        <!-- <td><%= user.profilepicture %></td> -->
+        <!-- <td><%= link_to 'Show', user, :class=>"btn btn-success" %></td>
+        -->
+        
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+
+</div>
